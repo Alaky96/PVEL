@@ -38,6 +38,16 @@ class Kernel extends HttpKernel
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
         ],
 
+        'validateadmin' => [
+            \App\Http\Middleware\Authenticate::class,
+            \App\Http\Middleware\ValidateAdmin::class,
+        ],
+
+        'validatesupplier' => [
+            \App\Http\Middleware\Authenticate::class,
+            \App\Http\Middleware\ValidateSupplier::class,
+        ],
+
         'api' => [
             'throttle:60,1',
             'bindings',
