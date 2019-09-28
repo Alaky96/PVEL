@@ -33,3 +33,6 @@ Route::get('locale/{locale}', function ($locale) {
     session(['userLocale' => $locale]);
     return redirect()->back();
 });
+
+//Products
+Route::resource('/supplier/product', 'ProductController')->middleware("validatesupplier");

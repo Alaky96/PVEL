@@ -173,7 +173,7 @@ header .navbar-default .navbar-header {
 
 .web-sh.navbar-form input::-moz-placeholder {
 	/* Firefox 19+ */
-	color #474747;
+	color: #474747;
 	opacity: 1;
 }
 
@@ -274,7 +274,6 @@ header .navbar-default .navbar-header {
 
 .top-nav ul li a {
 	color: #fff;
-	font-family: ;
 	font-size: 14px;
 	font-weight: 400;
 }
@@ -1796,18 +1795,33 @@ header .navbar-default .navbar-header {
 }
 
 .form-inline .btn.btn-primary {
+	 position: absolute;
+	 right: 0px;
+	 top: 0px;
+	 background: #1d99ff;
+	 border: none;
+	 font-weight: 700;
+	 padding: 10px 31px;
+	 margin: 5px 4px;
+ }
+
+.form-inline .btn.btn-primary:hover {
+	background-color: #007dea;
+}
+
+.form-inline .btn.btn-danger {
 	position: absolute;
 	right: 0px;
 	top: 0px;
-	background: #1d99ff;
+	background: #ab0000;
 	border: none;
 	font-weight: 700;
 	padding: 10px 31px;
 	margin: 5px 4px;
 }
 
-.form-inline .btn.btn-primary:hover {
-	background-color: #007dea;
+.form-inline .btn.btn-danger:hover {
+	background-color: #780000;
 }
 
 .account-box .blue-form p {
