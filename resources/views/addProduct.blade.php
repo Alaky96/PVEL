@@ -10,10 +10,12 @@
                     <h4 class="modal-title">{{__("product.delete product")}}</h4>
                 </div>
                 <div class="modal-body">
-                   <p>
+                   <form action="{{route("product.destroy", isset($product->id) ? $product->id : '0')}}", method="post">
+                       @method("DELETE");
+                       @csrf
                        {{__("product.confirm delete")}} <br/><br/>
-                       <button class="btn btn-danger">{{__("product.delete")}}</button>
-                   </p>
+                     <button class="btn btn-danger">{{__("product.delete")}}</button>
+                   </form>
                 </div>
             </div>
         </div>
@@ -39,7 +41,7 @@
                               action="{{ isset($product) ? url("supplier/product/".$product->id)   : route('product.store') }}"
                               enctype="multipart/form-data">
                             @if(isset($product))
-                                @method("PUT");
+                                @method("PUT")
                             @endif
                             @csrf
 
@@ -49,7 +51,7 @@
 
                                 <div class="col-md-6">
                                     <input id="name" type="text" class="form-control is-invalid " name="name"
-                                           value="{{ empty(old('name')) ? $product->name ?? '' : old('name') }}">
+                                           value="{{ old('name', $product->name ?? null) }}">
                                     @error('name')
                                     <div class="alert alert-danger">{{ $message }}</div>
                                     @enderror
@@ -62,7 +64,7 @@
 
                                 <div class="col-md-6">
                                     <textarea id="descr" rows="10" class="form-control"
-                                              name="descr">{{ empty(old('descr')) ? $product->descr ?? '' : old('descr') }} </textarea>
+                                              name="descr">{{ old('descr', $product->descr ?? null) }} </textarea>
 
                                     @error('descr')
                                     <div class="alert alert-danger">{{ $message }}</div>
@@ -75,7 +77,7 @@
 
                                 <div class="col-md-6">
                                     <input id="price" type="number" class="form-control" name="price"
-                                           value="{{ empty(old('price')) ? $product->price ?? '' : old('price') }}"/>
+                                           value="{{ old('price', $product->price ?? null) }}"/>
                                     @error('price')
                                     <div class="alert alert-danger">{{ $message }}</div>
                                     @enderror
@@ -87,12 +89,39 @@
 
                                 <div class="col-md-6">
                                     <input id="shippingprice" type="number" class="form-control" name="shippingprice"
-                                           value="{{ empty(old('shippingprice')) ? $product->shipping_price ?? '' : old('shippingprice') }}"/>
+                                           value="{{ old('shippingprice', $product->shipping_price ?? null) }}"/>
                                     @error('shippingprice')
                                     <div class="alert alert-danger">{{ $message }}</div>
                                     @enderror
                                 </div>
                             </div>
+
+                            <div class="form-check row">
+                                <label for="approved"
+                                       class="col-md-4 col-form-label text-md-right">{{ __('product.approved') }}</label>
+
+                                <div class="col-md-6">
+                                    <input id="approved" type="checkbox" class="form-check-input"
+                                           name="approved" @if(Auth()->user()->type !== "ad") disabled @endif @if($product->approved ?? false) checked @endif/>
+                                    @error('approved')
+                                    <div class="alert alert-danger">{{ $message }}</div>
+                                    @enderror
+                                </div>
+                            </div>
+
+                            <div class="form-check row">
+                                <label for="active"
+                                       class="col-md-4 col-form-label text-md-right">{{ __('product.active') }}</label>
+
+                                <div class="col-md-6">
+                                    <input id="active" type="checkbox" class="form-check-input"
+                                           name="active" @if(old('active', $product->active ?? false)) checked @endif/>
+                                    @error('active')
+                                    <div class="alert alert-danger">{{ $message }}</div>
+                                    @enderror
+                                </div>
+                            </div>
+
                             <div class="form-group row">
                                 <label for="image"
                                        class="col-md-4 col-form-label text-md-right">{{ __('product.image') }}</label>

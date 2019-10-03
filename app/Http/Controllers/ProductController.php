@@ -6,6 +6,7 @@ use App\Product;
 use Illuminate\Http\Request;
 use Illuminate\Http\UploadedFile;
 use App\Http\Requests\ProductRequest;
+use Illuminate\Support\Facades\Auth;
 
 class ProductController extends Controller
 {
@@ -16,7 +17,9 @@ class ProductController extends Controller
      */
     public function index()
     {
-
+        //$products = Product::where("fk_owner", auth()->user()->id);
+        $products = Product::where("fk_owner", auth()->user()->id)->orderBy("created_at", "asc")->get();
+        return view("ListProducts", ['products'=> $products])->with("title", @trans("product.yourproduct"));
     }
 
     /**
@@ -40,34 +43,8 @@ class ProductController extends Controller
 
 
         $product = new Product();
-        $product->name = $request->name;
-        $product->descr = $request->descr;
-        $product->price = $request->price;
-        $product->shipping_price = $request->shippingprice;
-        $product->fk_owner = auth()->user()->id;
-        $product->approved = false;
-        $product->active = true;
-        $product->out_of_stock = false;
-        $product->featured = false;
-
-
-        if ($request->has('image')) {
-            $product->image_path = 'test';
-            // Get image file
-            $image = $request->file('image');
-            // Make a image name based on user name and current timestamp
-            $name = time();
-            // Define folder path
-            $folder = '/uploads/images/';
-            // Make a file path where image will be stored [ folder path + file name + file extension]
-            $filePath = $folder . $name. '.' . $image->getClientOriginalExtension();
-            // Upload image
-            $this->uploadOne($image, $folder, 'public', $name);
-            $product->image_path = $filePath;
-        }
-
-        $product->save();
-        return redirect()->back()->with("success", trans("product.product added"));
+        self::saveProduct($product, $request);
+        return redirect()->route("product.index")->with("success", trans("product.product added"));
     }
 
     /**
@@ -103,18 +80,15 @@ class ProductController extends Controller
     public function update(ProductRequest $request, $id)
     {
         $product = Product::find($id);
-        $product->name = $request->name;
-        $product->descr = $request->descr;
-        $product->price = $request->price;
-        $product->shipping_price = $request->price;
-        $product->save();
+        self::saveProduct($product, $request);
         return redirect()->back()->with("success", trans("product.product updated"));
     }
 
 
     public function destroy($id)
     {
-        //
+        Product::destroy($id);
+        return redirect()->route("product.index")->with("success", trans("product.deleted"));
     }
 
     //private methods
@@ -127,5 +101,35 @@ class ProductController extends Controller
         $file = $uploadedFile->storeAs($folder, $name.'.'.$uploadedFile->getClientOriginalExtension(), $disk);
 
         return $file;
+    }
+
+    public function saveProduct(Product $product, ProductRequest $request)
+    {
+        $product->name = $request->name;
+        $product->descr = $request->descr;
+        $product->price = $request->price;
+        $product->shipping_price = $request->shippingprice;
+        $product->fk_owner = auth()->user()->id;
+        $product->approved = false;
+        $product->active = true;
+        $product->out_of_stock = false;
+        $product->featured = false;
+
+
+        if ($request->has('image')) {
+            // Get image file
+            $image = $request->file('image');
+            // Make a image name based on user name and current timestamp
+            $name = time();
+            // Define folder path
+            $folder = '/uploads/images/';
+            // Make a file path where image will be stored [ folder path + file name + file extension]
+            $filePath = $folder . $name. '.' . $image->getClientOriginalExtension();
+            $product->image_path = $filePath;
+            // Upload image
+            $this->uploadOne($image, $folder, 'public', $name);
+        }
+
+        $product->save();
     }
 }

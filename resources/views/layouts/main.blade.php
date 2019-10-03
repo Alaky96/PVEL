@@ -70,7 +70,7 @@
                             <div class="nav-box">
                                 <ul>
                                     <li><a href="howitworks.html">Comment ça fonctionne ?</a></li>
-                                    <li><a href="about-us.html">Fournisseurs</a></li>
+                                    <li><a href="{{route("product.index")}}">Fournisseurs</a></li>
                                 </ul>
                             </div>
                         </div>

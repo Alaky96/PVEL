@@ -23,4 +23,8 @@ return [
     'delete'            => 'Supprimer',
     'delete product'    => 'Supprimer le produit',
     'confirm delete'    =>  'ATTENTION : Voulez-vous vraiment supprimer ce produit ?',
+    'deleted'           => 'Le produit a été supprimé',
+    'approved'          => 'Approuvé',
+    'active'            => 'Actif',
+    'yourproduct'       => 'Vos Produits',
 ];
