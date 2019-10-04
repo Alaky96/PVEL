@@ -168,5 +168,8 @@ return [
         'time'                  => 'heure',
         'available'             => 'disponible',
         'size'                  => 'taille',
+        'price'                 => 'prix',
+        'descr'                 => 'description',
+        'shippingprice'         => "prix d'expédition",
     ],
 ];
