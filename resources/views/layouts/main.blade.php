@@ -34,7 +34,7 @@
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                         </button>
-                        <a href="{{route("home")}}" class="navbar-brand"><img src="images/logo.png" alt="" /></a>
+                        <a href="{{route("home")}}" class="navbar-brand"><img src="{{ URL::asset('images/logo.png') }}" alt="" /></a>
                     </div>
                     <form class="navbar-form navbar-left web-sh">
                         <div class="form">
@@ -61,8 +61,8 @@
                         <div class="help-r hidden-xs">
                             <div class="help-box">
                                 <ul>
-                                    <li> <a data-toggle="modal" data-target="#myModal" href="#"> <img src="images/flag{{Config::get('app.locale')}}.png" alt="" /> </a> </li>
-                                    <li> <a href="#"><img class="h-i" src="images/help-icon.png" alt="" /> Support </a> </li>
+                                    <li> <a data-toggle="modal" data-target="#myModal" href="#"> <img src="{{URL::asset('images/') . '/flag' . Config::get('app.locale') . '.png'}}" alt="" /> </a> </li>
+                                    <li> <a href="#"><img class="h-i" src="{{URL::asset('images/help-icon.png')}} " alt="" /> Support </a> </li>
                                 </ul>
                             </div>
                         </div>
@@ -70,7 +70,7 @@
                             <div class="nav-box">
                                 <ul>
                                     <li><a href="howitworks.html">Comment ça fonctionne ?</a></li>
-                                    <li><a href="about-us.html">Fournisseurs</a></li>
+                                    <li><a href="{{route("product.index")}}">Fournisseurs</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -92,8 +92,8 @@
             </div>
             <div class="modal-body">
                 <ul>
-                    <li><a href="{{ url("/locale/en")}}"><img src="images/flag-up-1.png" alt="" /> English</a></li>
-                    <li><a href="{{ url("/locale/fr")}}"><img src="images/flag-up-2.png" alt="" /> Français </a></li>
+                    <li><a href="{{ url("/locale/en")}}"><img src="{{ URL::asset('images/flag-up-1.png') }}" alt="" /> English</a></li>
+                    <li><a href="{{ url("/locale/fr")}}"><img src="{{ URL::asset('images/flag-up-2.png') }}" alt="" /> Français </a></li>
                 </ul>
             </div>
         </div>
@@ -172,7 +172,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-8">
-                    <p><img width="90" src="images/logo.png" alt="#" style="margin-top: -5px;" /> Tous Droits Réservés. XYZ © 2019</p>
+                    <p><img width="90" src="{{url::asset("images/logo.png")}}" alt="#" style="margin-top: -5px;" /> Tous Droits Réservés. XYZ © 2019</p>
                 </div>
                 <div class="col-md-4">
                     <ul class="list-inline socials">
@@ -198,7 +198,7 @@
                         </li>
                     </ul>
                     <ul class="right-flag">
-                        <li><a href="#"><img src="images/flag.png" alt="" /></a></li>
+                        <li><a href="#"><img src="{{URL::asset('images/') . '/flag' . Config::get('app.locale') . '.png'}}" alt="" /></a></li>
                     </ul>
                 </div>
             </div>
@@ -207,13 +207,13 @@
 </footer>
 <!--main js-->
 
-<script src="js/jquery-1.12.4.min.js"></script>
+<script src="{{ URL::asset('js/jquery-1.12.4.min.js') }}"></script>
 <!--bootstrap js-->
-<script src="js/bootstrap.min.js"></script>
-<script src="js/bootstrap-select.min.js"></script>
-<script src="js/slick.min.js"></script>
-<script src="js/wow.min.js"></script>
+<script src="{{ URL::asset('js/bootstrap.min.js') }}"></script>
+<script src="{{ URL::asset('js/bootstrap-select.min.js') }}"></script>
+<script src="{{ URL::asset('js/slick.min.js') }}"></script>
+<script src="{{ URL::asset('js/wow.min.js') }}"></script>
 <!--custom js-->
-<script src="js/custom.js"></script>
+<script src="{{ URL::asset('js/custom.js') }}"></script>
 </body>
 </html>
