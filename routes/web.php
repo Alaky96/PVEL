@@ -34,5 +34,8 @@ Route::get('locale/{locale}', function ($locale) {
     return redirect()->back();
 });
 
+//Customer Product
+Route::get('/customer/product/{id}', 'CustomerProductController@show');
 //Products
 Route::resource('/supplier/product', 'ProductController')->middleware("validatesupplier");
+
