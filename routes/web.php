@@ -33,3 +33,6 @@ Route::get('locale/{locale}', function ($locale) {
     session(['userLocale' => $locale]);
     return redirect()->back();
 });
+
+//Customer Product
+Route::get('/customer/product/{id}', 'CustomerProductController@show');
