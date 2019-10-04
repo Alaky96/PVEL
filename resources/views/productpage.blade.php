@@ -15,7 +15,7 @@
                 <div class="col-md-2 col-sm-4">
                     <div class="left-profile-box-m prod-page">
                         <div class="pro-img">
-                            <img src="images/blueox.jpg" alt="#" />
+                            <img src="{{ URL::asset('images/blueox.jpg') }}" alt="#" />
                         </div>
                     </div>
                 </div>
@@ -25,13 +25,13 @@
                             <div class="page-preview">
                                 <div class="preview">
                                     <div class="preview-pic tab-content">
-                                        <div class="tab-pane active" id="pic-1"><img src="images/product/shafts.png" alt="#" /></div>
-                                        <div class="tab-pane" id="pic-2"><img src="images/lag-61.png" alt="#" /></div>
-                                        <div class="tab-pane" id="pic-3"><img src="images/lag-60.png" alt="#" /></div>
-                                        <div class="tab-pane" id="pic-4"><img src="images/lag-61.png" alt="#" /></div>
+                                        <div class="tab-pane active" id="pic-1"><img src="{{ URL::asset('images/product/shafts.png') }}" alt="#" /></div>
+                                        <div class="tab-pane" id="pic-2"><img src="{{ URL::asset('images/lag-61.png') }}" alt="#" /></div>
+                                        <div class="tab-pane" id="pic-3"><img src="{{ URL::asset('images/lag-60.png') }}" alt="#" /></div>
+                                        <div class="tab-pane" id="pic-4"><img src="{{ URL::asset('images/lag-61.png') }}" alt="#" /></div>
                                     </div>
                                     <ul class="preview-thumbnail nav nav-tabs">
-                                        <li class="active"><a data-target="#pic-1" data-toggle="tab"><img src="images/product/shafts.png" alt="#" /></a></li>
+                                        <li class="active"><a data-target="#pic-1" data-toggle="tab"><img src="{{ URL::asset('images/product/shafts.png') }}" alt="#" /></a></li>
                                     </ul>
                                 </div>
                             </div>
