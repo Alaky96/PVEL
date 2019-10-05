@@ -27,4 +27,9 @@ return [
     'approved'          => 'Approuvé',
     'active'            => 'Actif',
     'yourproduct'       => 'Vos Produits',
+    'instock'           => 'Le fournisseur signal que cet item est disponible.',
+    'noinstock'         => 'Le fournisseur signal que cet item est indisponible.',
+    'price'             => 'Prix',
+    'shippingprice'     =>  'Frais de livraison',
+    'By'                => 'Par',
 ];

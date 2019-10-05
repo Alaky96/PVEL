@@ -1,13 +1,24 @@
 @extends('layouts.main')
 
 @section('content')
+    <div class="card-body">
+        @if (session('error'))
+            <div class="alert alert-danger">
+                {{ session('error') }}
+            </div>
+        @endif
+        @if (session('success'))
+            <div class="alert alert-success">
+                {{ session('success') }}
+            </div>
+        @endif
     <div class="product-page-main">
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
                     <div class="prod-page-title">
-                        <h2>Manche C405</h2>
-                        <p>By <span>Blue Ox</span></p>
+                        <h2>{{$product->name}}</h2>
+                        <p>{{__("product.By")}} <span>{{$product->supplier->name}}</span></p>
                     </div>
                 </div>
             </div>
@@ -25,13 +36,13 @@
                             <div class="page-preview">
                                 <div class="preview">
                                     <div class="preview-pic tab-content">
-                                        <div class="tab-pane active" id="pic-1"><img src="{{ URL::asset('images/product/shafts.png') }}" alt="#" /></div>
-                                        <div class="tab-pane" id="pic-2"><img src="{{ URL::asset('images/lag-61.png') }}" alt="#" /></div>
+                                        <div class="tab-pane active" id="pic-1"><img src="{{ asset('storage/' . $product->image_path) }}" alt="#" /></div>
+                                        <div class="tab-pane" id="pic-2"><img src="{{ asset('storage/' . $product->image_path) }}" alt="#" /></div>
                                         <div class="tab-pane" id="pic-3"><img src="{{ URL::asset('images/lag-60.png') }}" alt="#" /></div>
                                         <div class="tab-pane" id="pic-4"><img src="{{ URL::asset('images/lag-61.png') }}" alt="#" /></div>
                                     </div>
                                     <ul class="preview-thumbnail nav nav-tabs">
-                                        <li class="active"><a data-target="#pic-1" data-toggle="tab"><img src="{{ URL::asset('images/product/shafts.png') }}" alt="#" /></a></li>
+                                        <li class="active"><a data-target="#pic-1" data-toggle="tab"><img src="{{ asset('storage/' . $product->image_path) }}" alt="#" /></a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -39,12 +50,8 @@
                         </div>
                         <div class="description-box">
                             <div class="dex-a">
-                                <h4>Description</h4>
-                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                                    lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
-                                    when an unknown printer took a galley of type and scrambled it to make a
-                                    type specimen book..
-                                </p>
+                                <h4>{{__("product.descr")}}</h4>
+                                <p>{{$product->descr}}</p>
                                 <br>
                                 <p>Small: H 25 cm / &Oslash; 12 cm</p>
                                 <p>Large H 24 cm / &Oslash; 25 cm</p>
@@ -124,8 +131,9 @@
                 </div>
                 <div class="col-md-3 col-sm-12">
                     <div class="price-box-right">
-                        <h4>Price</h4>
-                        <h3>$120 <span></span></h3>
+                        <h4>{{__("product.price")}}</h4>
+                        <h3>${{$product->price}} <span></span></h3>
+                        <h6>{{__("product.shippingprice")}} : ${{$product->shipping_price}}</h6>
                         <p>Couleurs</p>
                         <select class="form-control select2">
                             <option>Or</option>
@@ -136,8 +144,10 @@
                             <option>46"</option>
                             <option value="">52"</option>
                         </select>
-                        <a href="#">Ajouter au panier</a>
-                        <h5><i class="fa fa-clock-o" aria-hidden="true"></i> Le fournisseur signal que cet item est <strong>disponible</strong>.</h5>
+                        <form method="post" action="hello.html">
+                            <button class="custom-b" href="#"  {{$product->out_of_stock ? 'disabled' : ''}}>Ajouter au panier</button>
+                        </form>
+                        <h5 class ="{{$product->out_of_stock ? 'notinstock' : ''}}"><i class="fa fa-clock-o " aria-hidden="true"></i> {{$product->out_of_stock ? __('product.noinstock') : __('product.instock')}}</h5>
                     </div>
                 </div>
             </div>

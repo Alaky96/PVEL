@@ -339,6 +339,31 @@ header .navbar-default .navbar-header {
 	background: #1d99ff;
 }
 
+.custom-b {
+    background: #09294c;
+    border-radius: 3px;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 500;
+    color: #fff;
+    padding: 10px 23px;
+    border: none;
+    margin-top : 10px;
+}
+
+.custom-b:disabled
+{
+    background: #c8c8c8;
+    cursor: not-allowed;
+}
+
+.custom-b:hover {
+    background: #1d99ff;
+}
+
+.custom-b:disabled:hover {
+    background: #c8c8c8;
+}
+
 .help-r {
 	float: right;
 }
@@ -3275,6 +3300,12 @@ html .ui-button.ui-state-disabled:active {
 	padding-bottom: 16px;
 }
 
+.price-box-right h6 {
+    font-size: 12px;
+    color: #092749;
+    padding-bottom: 16px;
+}
+
 .price-box-right h3 span {
 	font-size: 14px;
 	font-weight: 400;
@@ -3356,6 +3387,12 @@ html .ui-button.ui-state-disabled:active {
 	padding-bottom: 35px;
 }
 
+.notinstock
+{
+    color: #cc0000 !important;
+    font-weight: bold;
+}
+
 .price-box-right ul {
 	width: 150px;
 }
@@ -3405,4 +3442,3 @@ html .ui-button.ui-state-disabled:active {
 .bg_img_right img {
 	width: 100%;
 }
-
