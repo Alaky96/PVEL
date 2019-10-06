@@ -39,3 +39,6 @@ Route::resource('/supplier/product', 'ProductController')->middleware("validates
 
 //Customer Product
 Route::get('/customer/product/{id}', 'CustomerProductController@show');
+
+//Cart
+Route::post("/cart/addItem", "CartController@addItem")->name("cart.addItem");

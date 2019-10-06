@@ -2,14 +2,14 @@
 
 @section('content')
     <div class="card-body">
-        @if (session('error'))
+        @if (session('error') || !empty($error))
             <div class="alert alert-danger">
-                {{ session('error') }}
+                {{ empty(session('error')) ? $error : session('error') }}
             </div>
         @endif
-        @if (session('success'))
+        @if (session('success') ||!empty($success))
             <div class="alert alert-success">
-                {{ session('success') }}
+                {{ empty(session('success')) ? $success : session('success') }}
             </div>
         @endif
     <div class="product-page-main">
@@ -144,7 +144,9 @@
                             <option>46"</option>
                             <option value="">52"</option>
                         </select>
-                        <form method="post" action="hello.html">
+                        <form method="post" action="{{route("cart.addItem")}}">
+                            @csrf
+                            <input type="hidden" name="productid" value="{{$product->id}}"/>
                             <button class="custom-b" href="#"  {{$product->out_of_stock ? 'disabled' : ''}}>Ajouter au panier</button>
                         </form>
                         <h5 class ="{{$product->out_of_stock ? 'notinstock' : ''}}"><i class="fa fa-clock-o " aria-hidden="true"></i> {{$product->out_of_stock ? __('product.noinstock') : __('product.instock')}}</h5>
