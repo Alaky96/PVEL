@@ -10,4 +10,9 @@ class Cart extends Model
     protected $fillable = [
         'qty',
     ];
+
+    public function product()
+    {
+        return $this->belongsTo('App\Product', 'fk_product');
+    }
 }

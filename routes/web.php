@@ -42,3 +42,7 @@ Route::get('/customer/product/{id}', 'CustomerProductController@show');
 
 //Cart
 Route::post("/cart/addItem", "CartController@addItem")->name("cart.addItem");
+Route::get("/cart", "CartController@show")->name("cart.show");
+Route::get("/cart/delete/{id}", "CartController@delete");
+Route::get("/cart/payment", "PaymentController@payWithpaypal")->name("paywithpaypal");
+Route::get("/cart/payment/execute", "PaymentController@getPaymentStatus")->name("executepayment");

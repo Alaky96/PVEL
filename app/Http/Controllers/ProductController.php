@@ -110,8 +110,8 @@ class ProductController extends Controller
         $product->price = $request->price;
         $product->shipping_price = $request->shippingprice;
         $product->fk_owner = auth()->user()->id;
-        $product->approved = false;
-        $product->active = true;
+        $product->approved = ($request->approved == 'on' ? true : false);
+        $product->active = ($request->active == 'on' ? true : false);
         $product->out_of_stock = false;
         $product->featured = false;
 

@@ -36,6 +36,27 @@ class CartController extends Controller
        return redirect()->back()->with("success", trans("cart.itemadded"));
     }
 
+    public function show(Request $request)
+    {
+        $carts = Cart::where("fk_owner", auth()->user()->id)->get();
+
+        $subtotal = 0.0;
+        $shipping = 0.0;
+
+        foreach($carts as $cart)
+        {
+            $subtotal += $cart->product->price * $cart->qty;
+            $shipping += $cart->product->shipping_price * $cart->qty;
+        }
+        return view("cart", ['carts'=> $carts, 'subtotal'=>$subtotal, 'shipping'=>$shipping]);
+    }
+
+    public function delete(Request $request, $id)
+    {
+        Cart::destroy($id);
+        return redirect()->back();
+    }
+
     public function __construct()
     {
         //User need to be logged in to view this

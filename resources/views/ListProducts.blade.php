@@ -28,7 +28,7 @@
         @foreach($products as $product)
         <tr>
 
-            <td><a href = "{{ url('supplier/product/'.$product->id.'/edit') }}">{{$product->name}}</a></td>
+            <td><a href = "{{ url('customer/product/'.$product->id.'') }}">{{$product->name}}</a></td>
             <td>{{$product->price}}</td>
             <td>{{$product->shipping_price}}</td>
             <td><input type="checkbox" disabled {{($product->approved) ? 'checked' : ''}}/> </td>

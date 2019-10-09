@@ -1,6 +1,7 @@
 <?php
 return [
 
-    'itemadded'   => "L'item à bien été ajouté à votre panier."
+    'itemadded'   => "L'item à bien été ajouté à votre panier.",
+    'yourcart'    => "Votre Panier",
 
 ];

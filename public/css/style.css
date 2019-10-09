@@ -3442,3 +3442,25 @@ html .ui-button.ui-state-disabled:active {
 .bg_img_right img {
 	width: 100%;
 }
+
+.cartitem
+{
+	background-color : white;
+	box-shadow: 0 0 5px #ccc;
+	margin-bottom: 10px;
+}
+
+.cartitem-box
+{
+	border-top: 1px #ccc solid;
+	text-align: right;
+	padding: 10px;
+	font-size: 20px;
+	font-weight: bold;
+}
+
+.checkout-box
+{
+	font-size: 20px;
+	padding: 10px;
+}
