@@ -20,6 +20,7 @@
     <!--responsive css-->
     <link rel="stylesheet" href="{{ URL::asset('css/responsive.css') }}">
 </head>
+<script src="https://js.stripe.com/v3/"></script>
 <body>
 <header id="header" class="top-head">
     <!-- Static navbar -->

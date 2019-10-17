@@ -128,4 +128,9 @@ class PaymentController extends Controller
         \Session::put('error', 'Payment failed');
         return Redirect::route('home');
     }
+
+    public function checkout(Request $request)
+    {
+
+    }
 }

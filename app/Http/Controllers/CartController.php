@@ -56,6 +56,10 @@ class CartController extends Controller
         Cart::destroy($id);
         return redirect()->back();
     }
+    public function checkout(Request $request)
+    {
+        return view("checkout");
+    }
 
     public function __construct()
     {

@@ -46,3 +46,4 @@ Route::get("/cart", "CartController@show")->name("cart.show");
 Route::get("/cart/delete/{id}", "CartController@delete");
 Route::get("/cart/payment", "PaymentController@payWithpaypal")->name("paywithpaypal");
 Route::get("/cart/payment/execute", "PaymentController@getPaymentStatus")->name("executepayment");
+Route::get("/cart/checkout", "CartController@checkout")->name("checkout");
