@@ -81,7 +81,7 @@
                             <div class="nav-box">
                                 <ul>
                                     <li><a href="howitworks.html">Comment ça fonctionne ?</a></li>
-                                    @if( Auth::check() && Auth()->user()->type === 'su')
+                                    @if( Auth::check() && (Auth()->user()->type === 'su' || Auth()->user()->type === 'ad'))
                                         <li><div class="dropdown">
                                                 <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="profileMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                     Fournisseurs <span class="glyphicon glyphicon-chevron-down"></span>

@@ -3204,6 +3204,7 @@ html .ui-button.ui-state-disabled:active {
 
 .tab-content {
 	overflow: hidden;
+	text-align:center;
 }
 
 .preview-pic.tab-content {
@@ -3213,7 +3214,6 @@ html .ui-button.ui-state-disabled:active {
 }
 
 .tab-content img {
-	width: 100%;
 	-webkit-animation-name: opacity;
 	animation-name: opacity;
 	-webkit-animation-duration: .3s;
