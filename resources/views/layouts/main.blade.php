@@ -52,8 +52,18 @@
                                         <li><a href ="{{route("login")}}">Se connecter</a></li>
                                         <li><a class="custom-b" href="{{route("register")}}">S'inscrire</a></li>
                                     @else
-                                        <li><a href="{{route('profile')}}"> {{ Auth::user()->name }}</a></li>
-                                        <li><a href="{{ url('/logout') }}"> Se déconnecter </a></li>
+                                        <li><div class="dropdown">
+                                                <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="profileMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                    {{ Auth::user()->name }} <span class="glyphicon glyphicon-chevron-down"></span>
+                                                </a>
+
+                                                <div class="dropdown-menu" aria-labelledby="profileMenu">
+                                                    <a class="dropdown-item" href="{{route("profile")}}">Profile</a>
+                                                    <a class="dropdown-item" href="{{route("customerOrder.index")}}">Mes Commandes</a>
+                                                    <a class="dropdown-item" href="{{ url('/logout') }}">Se déconnecter</a>
+                                                </div>
+                                            </div></li>
+                                        <li><a href="{{route("cart.show")}}"> Panier </a></li>
                                     @endguest
 
                                 </ul>
@@ -71,7 +81,19 @@
                             <div class="nav-box">
                                 <ul>
                                     <li><a href="howitworks.html">Comment ça fonctionne ?</a></li>
-                                    <li><a href="{{route("product.index")}}">Fournisseurs</a></li>
+                                    @if( Auth::check() && Auth()->user()->type === 'su')
+                                        <li><div class="dropdown">
+                                                <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="profileMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                    Fournisseurs <span class="glyphicon glyphicon-chevron-down"></span>
+                                                </a>
+
+                                                <div class="dropdown-menu" aria-labelledby="profileMenu">
+                                                    <a class="dropdown-item dropd-item" href="{{route("product.index")}}">Mes Produits</a>
+                                                    <a class="dropdown-item dropd-item" href="{{route("shipments.index")}}">Mes Expéditions</a>
+                                                </div>
+                                            </div></li>
+
+                                    @endif
                                 </ul>
                             </div>
                         </div>
@@ -173,7 +195,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-8">
-                    <p><img width="90" src="{{url::asset("images/logo.png")}}" alt="#" style="margin-top: -5px;" /> Tous Droits Réservés. XYZ © 2019</p>
+                    <p><img width="90" src="{{url::asset("images/logo.png")}}" alt="logo" style="margin-top: -5px;" /> Tous Droits Réservés. XYZ © 2019</p>
                 </div>
                 <div class="col-md-4">
                     <ul class="list-inline socials">
@@ -209,6 +231,7 @@
 <!--main js-->
 
 <script src="{{ URL::asset('js/jquery-1.12.4.min.js') }}"></script>
+<script src="{{ URL::asset('js/jquery.mask.min.js') }}"></script>
 <!--bootstrap js-->
 <script src="{{ URL::asset('js/bootstrap.min.js') }}"></script>
 <script src="{{ URL::asset('js/bootstrap-select.min.js') }}"></script>
@@ -216,5 +239,11 @@
 <script src="{{ URL::asset('js/wow.min.js') }}"></script>
 <!--custom js-->
 <script src="{{ URL::asset('js/custom.js') }}"></script>
+
+<script>
+    $(document).ready(function(){
+        $('.phone').mask('(000) 000-0000');
+    });
+</script>
 </body>
 </html>

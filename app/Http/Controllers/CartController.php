@@ -4,10 +4,12 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Cart;
+use App\Service\CartService;
 use Illuminate\Support\Facades\Auth;
 
 class CartController extends Controller
 {
+    protected $cartServices;
     //Add an item to cart
     public function addItem(Request $request)
     {
@@ -38,17 +40,7 @@ class CartController extends Controller
 
     public function show(Request $request)
     {
-        $carts = Cart::where("fk_owner", auth()->user()->id)->get();
-
-        $subtotal = 0.0;
-        $shipping = 0.0;
-
-        foreach($carts as $cart)
-        {
-            $subtotal += $cart->product->price * $cart->qty;
-            $shipping += $cart->product->shipping_price * $cart->qty;
-        }
-        return view("cart", ['carts'=> $carts, 'subtotal'=>$subtotal, 'shipping'=>$shipping]);
+       return $this->cartServices->showView();
     }
 
     public function delete(Request $request, $id)
@@ -61,8 +53,9 @@ class CartController extends Controller
         return view("checkout");
     }
 
-    public function __construct()
+    public function __construct(CartService $cartService)
     {
+        $this->cartServices = new CartService();
         //User need to be logged in to view this
         $this->middleware('auth');
         $this->middleware('multilanguages');

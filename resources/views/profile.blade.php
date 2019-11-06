@@ -4,7 +4,7 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-8">
-                <h2 class="card">
+                <div class="card">
                     <h2>{{ __('profile.Profile') }}</h2>
 
                     <div class="card-body">

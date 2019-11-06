@@ -2,6 +2,16 @@
 
 @section('content')
     <div class="card-body">
+        @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
+        
         @if (session('error') || !empty($error))
             <div class="alert alert-danger">
                 {{ empty(session('error')) ? $error : session('error') }}
@@ -27,6 +37,43 @@
                     <div class="left-profile-box-m prod-page">
                         <div class="pro-img">
                             <img src="{{ URL::asset('images/blueox.jpg') }}" alt="#" />
+                        </div>
+                        <a href ="#" data-toggle="modal" data-target="#AskSupplierModal">Une question ? Posez-là au fournisseur !</a>
+                    </div>
+                </div>
+                <div class="modal fade" id="AskSupplierModal" tabindex="-1" role="dialog" aria-labelledby="AskSupplierModal" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Posez une question à {{$product->supplier->name}}</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <form id="askForm" method="post" action="{{route('askQuestion')}}">
+                                    @csrf
+                                    <div class="form-row">
+                                        <div class="form-group col-md-6">
+                                            <label for="email">Courriel</label>
+                                            <input  type="email" class="form-control" id="email" placeholder="Courriel" name="email" value="{{Auth()->user()->email ?? ''}}">
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                            <label for="name">Votre Nom</label>
+                                            <input  type="text" class="form-control" id="name" name="name" placeholder="Votre Nom" value="{{Auth()->user()->name ?? ''}}">
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-md-12">
+                                        <label for="text">Votre Question</label>
+                                        <textarea  type="text" class="form-control" id="text" name="text" placeholder="Votre question"></textarea>
+                                    </div>
+
+                                    <input type="hidden"value="{{$product->supplier->id}}" id="'supplierID" name="supplierID"/>
+
+                                    <button class="custom-b">Envoyer</button>
+
+                                </form>
+                            </div>
                         </div>
                     </div>
                 </div>

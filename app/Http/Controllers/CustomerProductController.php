@@ -2,9 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\AskToSupplier;
+use App\Mail\OrderConfirmation;
 use Illuminate\Http\Request;
 use App\Product;
 use App\Http\Requests\ProductRequest;
+use Illuminate\Support\Facades\Mail;
+use App\User;
 
 class CustomerProductController extends Controller
 {
@@ -29,5 +33,17 @@ class CustomerProductController extends Controller
         else if(($product->approved == false || $product->active == false) && !(auth()->user()->type == "ad" || auth()->user()->id == $product->fk_owner))
             abort("404");
         return view('productpage', ['product'=>$product]);
+    }
+
+    public function askQuestion(Request $request)
+    {
+        $request->validate([
+            'email' => 'required|email',
+            'text' => 'required',
+            'name' => 'required',
+        ]);
+
+        Mail::to('g.brunet96@gmail.com')->send(new AskToSupplier($request->email, $request->name, $request->text));
+        return redirect()->back()->with('success', trans("general.messageSent"));
     }
 }

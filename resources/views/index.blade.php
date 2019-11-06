@@ -48,7 +48,7 @@
                     </a>
                 </div>
                 <div class="col-lg-3 col-sm-6 col-md-3">
-                    <a href="productpage.html">
+                    <a href="{{url("customer/product/2")}}">
                         <div class="box-img">
                             <h4>Pièces Détachées</h4>
                             <img src="images/product/shafts.png" alt="" />

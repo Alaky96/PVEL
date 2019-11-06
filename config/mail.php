@@ -56,8 +56,13 @@ return [
     */
 
     'from' => [
-        'address' => env('MAIL_FROM_ADDRESS', 'hello@example.com'),
+        'address' => env('MAIL_FROM_ADDRESS', 'info@blueoxmontreal.com'),
         'name' => env('MAIL_FROM_NAME', 'Example'),
+    ],
+
+    'to' => [
+        'address' => 'g.brunet96@gmail.com',
+        'name' => 'Example'
     ],
 
     /*
@@ -132,5 +137,6 @@ return [
     */
 
     'log_channel' => env('MAIL_LOG_CHANNEL'),
+    'pretend' => false,
 
 ];
