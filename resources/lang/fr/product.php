@@ -32,4 +32,6 @@ return [
     'price'             => 'Prix',
     'shippingprice'     =>  'Frais de livraison',
     'By'                => 'Par',
+    'creationdate'      => 'Date de création',
+    'allProducts'       => 'Tous les produits',
 ];

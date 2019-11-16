@@ -10,6 +10,8 @@ return [
     | as the size rules. Feel free to tweak each of these messages.
     |
     */
+    'changeSaved'          => 'Les changements ont bien été sauvargés.',
+    'fieldCommentRequired' => 'Le champ :attribute est obligatoire.',
     'accepted'             => 'Le champ :attribute doit être accepté.',
     'active_url'           => "Le champ :attribute n'est pas une URL valide.",
     'after'                => 'Le champ :attribute doit être une date postérieure au :date.',

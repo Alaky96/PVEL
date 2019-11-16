@@ -1,6 +1,9 @@
 @extends('layouts.main')
 
 @section('content')
+
+    <script src="{{ URL::asset('js/jquery-1.12.4.min.js') }}"></script>
+    <script src="{{ URL::asset('js/starrr.js') }}"></script>
     <div class="card-body">
         @if ($errors->any())
             <div class="alert alert-danger">
@@ -11,7 +14,18 @@
                 </ul>
             </div>
         @endif
-        
+        @if(session('commentError'))
+            <div class="alert alert-danger">
+                {{session('commentError')}}
+            </div>
+        @endif
+        @if(session('commentSuccess'))
+            <div class="alert alert-success">
+                {{session('commentSuccess')}}
+            </div>
+        @endif
+
+
         @if (session('error') || !empty($error))
             <div class="alert alert-danger">
                 {{ empty(session('error')) ? $error : session('error') }}
@@ -174,6 +188,52 @@
                             </div>
                         </div>
                     </div>
+                    <div class = "comment-section">
+                        <h3>Commentaires</h3>
+                        <div id="rating" style="display:inline"></div> {{number_format($rating, 1, ',', '')}} étoiles sur 5
+                        <div class="" >
+                            @foreach($comments as $comment)
+                            <div class="panel panel-default">
+                                <div class="panel-heading" style="background-color:#09294c;color:white">{{date_format(date_create($comment->comment_date), "Y-n-d")}} <div id="rating{{$comment->id}}" style="display:inline"></div></div>
+                                <div class="panel-body">{{$comment->user_text}}<br/><br/>
+                                    <i>{{$comment->user->name}}</i>
+                                    @admin
+                                    <div style="text-align:right"><a href="{{route("comment.delete", ['id'=>$comment->id])}}" class="btn-danger">Supprimer le commentaire</a></div>
+                                    @endadmin
+
+                                </div>
+                            </div>
+                            @endforeach
+                        </div>
+                        {{$comments->links()}}
+
+                        @guest
+                            Connectez-vous pour laisser un commentaire
+                        @else
+                            <h3>Laisser un commentaire</h3>
+                            @if(session('commentError'))
+                                <div class="alert alert-danger">
+                                   {{session('commentError')}}
+                                </div>
+                            @endif
+                            <form method="post" action="{{route('comment.store')}}">
+                                @csrf
+                                <div class="form-group col-md-12">
+                                    <label for="text">Qu'avez vous pensé de ce produit ?</label>
+                                    <textarea  type="text" class="form-control" id="text" name="text" placeholder="Votre commentaire">{{session('oldComment')}}</textarea>
+                                </div>
+                                <div class="form-group col-md-12">
+                                    <label>Note</label>
+                                    <div id = "commentRating"></div>
+                                </div>
+
+                                <input type="hidden"value="0" id="newRating" name="newRating"/>
+                                <input type="hidden"value="{{$product->id}}" id="productID" name="productID"/>
+
+                                <button class="custom-b">Envoyer</button>
+                            </form>
+                        @endguest
+                    </div>
 
                 </div>
                 <div class="col-md-3 col-sm-12">
@@ -202,4 +262,24 @@
             </div>
         </div>
     </div>
+
+            <script>
+                $('#rating').starrr({
+                    rating: {{$rating}},
+                    readOnly: true
+                })
+
+                $('#commentRating').starrr({
+                })
+                $('#commentRating').on('starrr:change', function(e, value){
+                   $("#newRating").val(value);
+                })
+
+                @foreach($comments as $comment)
+                $('#rating{{$comment->id}}').starrr({
+                    rating: {{$comment->rating}},
+                    readOnly: true
+                })
+                @endforeach
+            </script>
 @endsection

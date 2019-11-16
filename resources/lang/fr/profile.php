@@ -24,4 +24,5 @@ return [
     'Invalid Current Password' => "Votre mot de passe actuel est invalide.",
     'Password does not match' => "Le nouveau mot de passe et la confirmation ne correspondent pas.",
     'Same Password' => "Votre nouveau mot de passe ne peux pas être identique à votre mot de passe actuel.",
+    'type'  => 'Type',
 ];

@@ -365,6 +365,127 @@ header .navbar-default .navbar-header {
 	background: #1d99ff;
 }
 
+.img-product
+{
+    max-height: 30vh;
+    margin: 0 auto;
+    transition: transform .2s;
+}
+
+.img-product:hover
+{
+    transform: scale(1.2);
+}
+
+.panel-body-product
+{
+    text-align: center !important;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    margin: 20px;
+    border: 1px #e1e1e1 solid;
+    height: 40vh;
+    border-radius: 10px;
+}
+
+.active .page-link
+{
+    background-color: #09294c !important;
+    border-color: #09294c !important;
+}
+
+.product-box
+{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.product-panel
+{
+    text-align: center;
+    height: 50vh;
+}
+
+.product-menu
+{
+    border: 1px #e1e1e1 solid;
+    border-radius: 10px;
+    padding: 0 !important;
+    background-color: #f1f1f1;
+
+}
+
+
+
+.product-menu ul
+{
+    padding: 0;
+}
+
+.product-menu a
+{
+    color: black;
+}
+
+.product-menu a:hover
+{
+    color: #09294c;
+    text-decoration: underline;
+}
+
+.product-menu ul li
+{
+     margin: 20px 0px 10px 10px;
+    font-size: 15px;
+    font-weight: bold;
+
+}
+
+.product-menu ul li:hover
+{
+    color: #09294c;
+    text-decoration: underline;
+}
+.arrow {
+    border: solid #b9b9b9;
+    border-width: 0 2px 2px 0;
+    display: inline-block;
+    margin: 5px;
+}
+
+
+
+.right {
+    float: right;
+    font-size: 10px;
+    color: #a8a8a8;
+}
+
+.dropdown-content {
+    visibility: hidden;
+    opacity: 0;
+    position:absolute;
+    left:100%;
+    top: 0%;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    background-color: white;
+    border: 1px #dcdcdc solid;
+    border-radius: 5px;
+    transition: visibility 0s, opacity 0.2s linear;
+}
+
+.dropdown-content a
+{
+    color: black;
+}
+.menu-link:hover .dropdown-content, .dropdown-content:hover, .dropdown-content li:hover {
+    visibility: visible;
+    opacity: 100%;}
+
 .custom-b {
     background: #09294c;
     border-radius: 3px;
@@ -3179,6 +3300,7 @@ html .ui-button.ui-state-disabled:active {
 .preview-thumbnail.nav-tabs {
 	border: none;
 	margin-top: 15px;
+    display:none;
 }
 
 .preview-thumbnail.nav-tabs li {
@@ -3254,6 +3376,14 @@ html .ui-button.ui-state-disabled:active {
 	padding-right: 11px;
 	padding-bottom: 10px;
 	background: #fff;
+}
+
+.comment-section
+{
+    margin: 20px;
+    padding-top:20px;
+   border-top: 1px gray solid;
+
 }
 
 .description-box h4 {

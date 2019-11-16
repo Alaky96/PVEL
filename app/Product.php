@@ -12,10 +12,12 @@ class Product extends Model
         'name', 'descr', 'price', 'shipping_price', 'image_path',
     ];
 
+
     public function supplier()
     {
         return $this->belongsTo('App\User', 'fk_owner');
     }
+
 
 
 }

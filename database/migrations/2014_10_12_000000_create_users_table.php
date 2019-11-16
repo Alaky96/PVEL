@@ -20,7 +20,7 @@ class CreateUsersTable extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->boolean("active")->default(1);
-            $table->string("type")->default("us");
+            $table->string("type")->default("cu");
             $table->dateTime("last_login_date")->nullable();
             $table->string("pref_lang")->default("en");
             $table->rememberToken();

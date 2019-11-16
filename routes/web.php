@@ -43,6 +43,8 @@ Route::resource('/supplier/product', 'ProductController')->middleware("validates
 //Customer Product
 Route::get('/customer/product/{id}', 'CustomerProductController@show')->name("customer.product");
 Route::post('/customer/askquestion', 'CustomerProductController@askQuestion')->name('askQuestion');
+route::post("/customer/product/comment", "CustomerProductController@storeComment")->name("comment.store");
+Route::get("/customer/product/comment/delete/{id}", "CustomerProductController@deleteComment")->name("comment.delete")->middleware("validateadmin");
 
 //Cart
 Route::post("/cart/addItem", "CartController@addItem")->name("cart.addItem");
@@ -63,6 +65,17 @@ Route::get("/customer/order/track/{id}", "OrderController@track")->name("custome
 Route::resource('shipments', 'ShipmentController')->only([
     'index', 'edit', 'update'
 ]);
+
+//Admin
+Route::get("/admin/users", "AdminController@showUsers")->name("admin.users");
+Route::post("/admin/users/{id}", "AdminController@editUser")->name("admin.editUser");
+Route::get("/admin/users/destroy/{id}", "AdminController@deleteUser")->name("admin.deleteUser");
+Route::get("/admin/products", "AdminController@showProducts")->name("admin.products");
+
+//Customer products nav
+route::get("/customer/products/supplier/{supplier}", "CustomerProductController@supplier")->name("customer.products.supplier");
+route::get("/customer/products/{category?}/{supplier?}", "CustomerProductController@index")->name("customer.products");
+
 
 //Test for email
 Route::get('email', function(){

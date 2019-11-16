@@ -16,7 +16,7 @@ class OrderController extends Controller
 
     public function index(Request $request)
     {
-        $orders = PurchaseOrders::where("fk_customer", auth()->user()->id)->orderBy("created_at", "desc")->get();
+        $orders = PurchaseOrders::where("fk_customer", auth()->user()->id)->orderBy("created_at", "desc")->paginate(10);
         return view("ListOrders", ['orders'=> $orders]);
     }
 

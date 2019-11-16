@@ -18,7 +18,7 @@
                         <div class="col-sm-3">
                             <div class="form-sh"> <a class="btn" href="#">Rechercher</a> </div>
                         </div>
-                        <p>Ou <a href="#featured"> cliquez ici </a> pour être inspiré</p>
+                        <p>Ou <a href="{{route("customer.products") }}"> cliquez ici </a> pour voir tous les produits</p>
                     </div>
                 </div>
             </div>

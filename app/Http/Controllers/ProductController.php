@@ -8,6 +8,7 @@ use Illuminate\Http\UploadedFile;
 use App\Http\Requests\ProductRequest;
 use Illuminate\Support\Facades\Auth;
 
+
 class ProductController extends Controller
 {
     /**
@@ -15,10 +16,10 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         //$products = Product::where("fk_owner", auth()->user()->id);
-        $products = Product::where("fk_owner", auth()->user()->id)->orderBy("created_at", "asc")->get();
+        $products = Product::where("fk_owner", auth()->user()->id)->orderBy($request->orderBy ?? 'created_at', $request->order??'desc')->paginate(10);
         return view("ListProducts", ['products'=> $products])->with("title", @trans("product.yourproduct"));
     }
 
@@ -48,17 +49,6 @@ class ProductController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
@@ -67,6 +57,11 @@ class ProductController extends Controller
     public function edit($id)
     {
         $product = Product::find($id);
+        if(Auth::check())
+        {
+            if($product->fk_owner != Auth::id() && Auth::user()->type != 'ad')
+                abort(403);
+        }
         return view("addProduct")->with(['product'=> $product]);
     }
 
@@ -110,7 +105,10 @@ class ProductController extends Controller
         $product->price = $request->price;
         $product->shipping_price = $request->shippingprice;
         $product->fk_owner = auth()->user()->id;
-        $product->approved = ($request->approved == 'on' ? true : false);
+        if(Auth::user()->type === "su")
+            $product->approved = (false);
+        else
+            $product->approved = ($request->approved == 'on' ? true : false);
         $product->active = ($request->active == 'on' ? true : false);
         $product->out_of_stock = false;
         $product->featured = false;

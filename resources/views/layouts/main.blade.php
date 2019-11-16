@@ -19,6 +19,7 @@
     <link rel="stylesheet" href="{{ URL::asset('css/slick.min.css') }}">
     <!--responsive css-->
     <link rel="stylesheet" href="{{ URL::asset('css/responsive.css') }}">
+    <link rel="stylesheet" href="{{ URL::asset('css/starrr.css') }}">
 </head>
 <script src="https://js.stripe.com/v3/"></script>
 <body>
@@ -81,7 +82,7 @@
                             <div class="nav-box">
                                 <ul>
                                     <li><a href="howitworks.html">Comment ça fonctionne ?</a></li>
-                                    @if( Auth::check() && (Auth()->user()->type === 'su' || Auth()->user()->type === 'ad'))
+                                    @supplier
                                         <li><div class="dropdown">
                                                 <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="profileMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                     Fournisseurs <span class="glyphicon glyphicon-chevron-down"></span>
@@ -92,8 +93,20 @@
                                                     <a class="dropdown-item dropd-item" href="{{route("shipments.index")}}">Mes Expéditions</a>
                                                 </div>
                                             </div></li>
+                                    @endsupplier
+                                    @admin
+                                    <li><div class="dropdown">
+                                            <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="adminMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                Admin <span class="glyphicon glyphicon-chevron-down"></span>
+                                            </a>
 
-                                    @endif
+                                            <div class="dropdown-menu" aria-labelledby="adminMenu">
+                                                <a class="dropdown-item dropd-item" href="{{route("admin.users")}}">Utilisateurs</a>
+                                                <a class="dropdown-item dropd-item" href="{{route("admin.products")}}">Produits</a>
+                                            </div>
+                                        </div></li>
+                                    @endadmin
+
                                 </ul>
                             </div>
                         </div>

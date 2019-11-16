@@ -10,6 +10,6 @@ class ShipmentDet extends Model
 
     public function product()
     {
-        return $this->belongsTo("App\Product", 'fk_product');
+        return $this->belongsTo("App\Product", 'fk_product')->withTrashed();
     }
 }

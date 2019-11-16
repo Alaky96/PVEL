@@ -86,6 +86,16 @@
                             <small>Ajouter ce produit au panier, afin de le commander</small><br/>
                             <img src="{{URL::asset('images/screenshot3.PNG')}}"/>
                             <small>Suivre l'expédition d'une commande, grâce aux informations de repérage renseignés par le fournisseur</small><br/>
+                            <iframe width="420" height="315"
+                                    allowfullscreen="allowfullscreen"
+                                    mozallowfullscreen="mozallowfullscreen"
+                                    msallowfullscreen="msallowfullscreen"
+                                    oallowfullscreen="oallowfullscreen"
+                                    webkitallowfullscreen="webkitallowfullscreen"
+                                    src="https://www.youtube.com/embed/b2pYMVyjf04">
+                            </iframe><br/>
+
+                            Ce projet est réalisé par Gabriel Brunet, étudiant en informatique au Collège Lionel-Groulx. <a href="mailto:g.brunet96@gmail.com">g.brunet96@gmail.com</a>. Projet supervisé par Alexandre André-Lespérance
                         </p>
 
                     </div>

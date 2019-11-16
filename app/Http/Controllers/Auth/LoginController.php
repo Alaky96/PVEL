@@ -38,6 +38,16 @@ class LoginController extends Controller
         $this->middleware('guest')->except('logout');
     }
 
+    //So user, when logged in, is redirected to the previous page (GB 2019-11-08)
+    public function showLoginForm()
+    {
+        if(!session()->has('url.intended'))
+        {
+            session(['url.intended' => url()->previous()]);
+        }
+        return view('auth.login');
+    }
+
     /**
      * @param \Illuminate\Http\Request $request
      * @return array

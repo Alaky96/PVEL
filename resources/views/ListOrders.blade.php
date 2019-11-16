@@ -52,4 +52,5 @@
 
         @endforeach
     </table>
+{{$orders->links()}}
 @endsection

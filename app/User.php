@@ -36,4 +36,16 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function getStatus()
+    {
+        return $this->belongsTo('App\Status', 'type', 'code');
+    }
+
+    public function getTypesAttribute()
+    {
+        return Status::whereIn('code', ['cu', 'su', 'ad'])->orderBy('code', 'asc')->get();
+    }
+
+
 }

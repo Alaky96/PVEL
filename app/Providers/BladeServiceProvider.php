@@ -29,7 +29,7 @@ class BladeServiceProvider extends ServiceProvider
         });
 
         Blade::if('supplier', function () {
-            return auth()->check() && (auth()->user()->type === "ad" || auth()->user()->type === "su");
+            return auth()->check() && (auth()->user()->type === "su");
         });
     }
 }
