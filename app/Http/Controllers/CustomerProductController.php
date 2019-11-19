@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Category;
 use App\Mail\AskToSupplier;
 use App\Mail\OrderConfirmation;
 use Illuminate\Http\Request;
@@ -14,12 +15,19 @@ use App\Comment;
 
 class CustomerProductController extends Controller
 {
+
+    public function __construct()
+    {
+        //User need to be logged in to view this
+        $this->middleware('multilanguages');
+    }
     /**
      * Display the specified resource.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+
     public function show($id)
     {
         $product = Product::find($id);
@@ -79,6 +87,8 @@ class CustomerProductController extends Controller
     public function index($category = null, $supplier = null)
     {
         $title = "";
+        $suppliers = User::where('type', "su")->get();
+        $categories = Category::all();
         if(is_null($supplier) && is_null($category))
         {
             $products = Product::where('approved', true)->where('active', true)->paginate(9);
@@ -89,12 +99,32 @@ class CustomerProductController extends Controller
             return 'category';
         else
             return 'category and supplier';
-        return view("products", ['products'=>$products])->with('title', $title);
+        return view("products", ['products'=>$products, 'suppliers'=>$suppliers, 'categories'=>$categories])->with('title', $title);
 
     }
 
     public function supplier($supplier)
     {
         return 'supplier';
+    }
+
+    public function getProducts(Request $request)
+    {
+        sleep(1);
+        $suppliers = $request->get('suppliers');
+        $categories = $request->get('categories');
+        $result = null;
+        if(is_null($suppliers))
+            $result = Product::where('approved', true)->where('active', true);
+        else
+            $result = Product::whereIn('fk_owner', $suppliers)->where('approved', true)->where('active', true);
+        if(!is_null($categories))
+            $result->whereHas('category', function($q) use($categories)
+            {
+                $q->whereIn('id', $categories);
+
+            });
+
+        return \View::make('productPartial')->with('products', $result->paginate(9))->with("width", $request->get("width"));
     }
 }

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Category;
 use App\Product;
 use Illuminate\Http\Request;
 use Illuminate\Http\UploadedFile;
@@ -30,7 +31,8 @@ class ProductController extends Controller
      */
     public function create()
     {
-        return view("addProduct");
+        $categories = Category::all();
+        return view("addProduct", ['categories'=>$categories]);
     }
 
     /**
@@ -57,12 +59,13 @@ class ProductController extends Controller
     public function edit($id)
     {
         $product = Product::find($id);
+        $categories = Category::all();
         if(Auth::check())
         {
             if($product->fk_owner != Auth::id() && Auth::user()->type != 'ad')
                 abort(403);
         }
-        return view("addProduct")->with(['product'=> $product]);
+        return view("addProduct", ['categories'=>$categories])->with(['product'=> $product]);
     }
 
     /**
@@ -105,6 +108,7 @@ class ProductController extends Controller
         $product->price = $request->price;
         $product->shipping_price = $request->shippingprice;
         $product->fk_owner = auth()->user()->id;
+        $product->fk_category = $request->category;
         if(Auth::user()->type === "su")
             $product->approved = (false);
         else

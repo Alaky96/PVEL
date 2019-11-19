@@ -18,6 +18,11 @@ class Product extends Model
         return $this->belongsTo('App\User', 'fk_owner');
     }
 
+    public function category()
+    {
+        return $this->belongsTo('App\Category', 'fk_category');
+    }
+
 
 
 }

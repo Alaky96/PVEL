@@ -26,6 +26,7 @@ class CreateProductsTable extends Migration
             $table->integer('fk_categorie')->nullable();
             $table->boolean('featured');
             $table->string("image_path")->nullable();
+            $table->integer("fk_category");
             $table->softDeletes();
             $table->timestamps();
         });

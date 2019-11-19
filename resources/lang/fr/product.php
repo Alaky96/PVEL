@@ -34,4 +34,5 @@ return [
     'By'                => 'Par',
     'creationdate'      => 'Date de création',
     'allProducts'       => 'Tous les produits',
+    'category'          => 'Catégorie',
 ];

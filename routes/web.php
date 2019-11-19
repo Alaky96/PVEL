@@ -75,7 +75,7 @@ Route::get("/admin/products", "AdminController@showProducts")->name("admin.produ
 //Customer products nav
 route::get("/customer/products/supplier/{supplier}", "CustomerProductController@supplier")->name("customer.products.supplier");
 route::get("/customer/products/{category?}/{supplier?}", "CustomerProductController@index")->name("customer.products");
-
+route::post("/customer/products/ajax/getProducts", "CustomerProductController@getProducts");
 
 //Test for email
 Route::get('email', function(){

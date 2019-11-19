@@ -72,6 +72,24 @@
                                 </div>
                             </div>
                             <div class="form-group row">
+                                <label for="category"
+                                       class="col-md-4 col-form-label text-md-right">{{ __('product.category') }}</label>
+
+                                <div class="col-md-6">
+                                    <select id="category" name="category" class="form-control">
+
+                                        @foreach($categories as $category)
+                                            <option @if(($product->fk_category ?? 0) === $category->id) selected @endif value="{{$category->id}}">{{__("categories.".$category->name)}}</option>
+                                        @endforeach
+                                    </select>
+
+                                    @error('category')
+                                    <div class="alert alert-danger">{{ $message }}</div>
+                                    @enderror
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
                                 <label for="price"
                                        class="col-md-4 col-form-label text-md-right">{{ __('product.price') }}</label>
 
@@ -121,6 +139,7 @@
                                     @enderror
                                 </div>
                             </div>
+
 
                             <div class="form-group row">
                                 <label for="image"
