@@ -119,6 +119,7 @@ class CustomerProductController extends Controller
 
     public function getProducts(Request $request)
     {
+        usleep( 500000 );
         $suppliers = $request->get('suppliers');
         $categories = $request->get('categories');
         $result = null;
