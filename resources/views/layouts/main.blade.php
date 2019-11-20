@@ -74,7 +74,7 @@
                             <div class="help-box">
                                 <ul>
                                     <li> <a data-toggle="modal" data-target="#myModal" href="#"> <img src="{{URL::asset('images/') . '/flag' . Config::get('app.locale') . '.png'}}" alt="" /> </a> </li>
-                                    <li> <a href="#"><img class="h-i" src="{{URL::asset('images/help-icon.png')}} " alt="" /> Support </a> </li>
+                                    <li> <a href="{{route("support")}}"><img class="h-i" src="{{URL::asset('images/help-icon.png')}} " alt="" /> Support </a> </li>
                                 </ul>
                             </div>
                         </div>

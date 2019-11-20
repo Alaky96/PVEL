@@ -77,10 +77,6 @@ route::get("/customer/products/supplier/{supplier}", "CustomerProductController@
 route::get("/customer/products/{category?}/{supplier?}", "CustomerProductController@index")->name("customer.products");
 route::post("/customer/products/ajax/getProducts", "CustomerProductController@getProducts");
 
-//Test for email
-Route::get('email', function(){
-    $order = App\PurchaseOrders::find(33);
-
-    return new App\Mail\OrderConfirmation($order);
-});
+//Support
+route::get("/support", function(){return view("support");})->name("support")->middleware("auth")->middleware("multilanguages");
 
