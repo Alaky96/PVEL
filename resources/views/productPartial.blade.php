@@ -1,4 +1,7 @@
 <div class = "container-fluid displayerProduct">
+    @if($products->count() == 0)
+        <h2 style = "text-align:center">Aucun produit à affiché</h2>
+    @else
     @foreach($products->chunk(3) as $rows)
         <div class="row course-set courses__row">
             @foreach($rows as $product)
@@ -17,6 +20,7 @@
         </div>
     @endforeach
     {{$products->links()}}
+    @endif
 </div>
 
 

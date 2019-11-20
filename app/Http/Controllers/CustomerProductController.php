@@ -89,6 +89,7 @@ class CustomerProductController extends Controller
         $title = "";
         $suppliers = User::where('type', "su")->get();
         $categories = Category::all();
+
         if(is_null($supplier) && is_null($category))
         {
             $products = Product::where('approved', true)->where('active', true)->paginate(9);
@@ -96,10 +97,18 @@ class CustomerProductController extends Controller
         }
 
         else if(is_null($supplier))
-            return 'category';
+        {
+            $products = Product::where('approved', true)->where('active', true)
+                ->whereHas('category', function($q) use($category)
+                {
+                    $q->where('id', '=', $category);
+
+                })->paginate(9);
+            $title = trans("product.allProducts");
+        }
         else
             return 'category and supplier';
-        return view("products", ['products'=>$products, 'suppliers'=>$suppliers, 'categories'=>$categories])->with('title', $title);
+        return view("products", ['products'=>$products, 'suppliers'=>$suppliers, 'categories'=>$categories, 'selectedCategory'=>$category ?? 0])->with('title', $title);
 
     }
 
@@ -110,7 +119,6 @@ class CustomerProductController extends Controller
 
     public function getProducts(Request $request)
     {
-        sleep(1);
         $suppliers = $request->get('suppliers');
         $categories = $request->get('categories');
         $result = null;

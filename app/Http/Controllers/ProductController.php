@@ -78,7 +78,7 @@ class ProductController extends Controller
     public function update(ProductRequest $request, $id)
     {
         $product = Product::find($id);
-        self::saveProduct($product, $request);
+        self::saveProduct($product, $request, true);
         return redirect()->back()->with("success", trans("product.product updated"));
     }
 
@@ -101,13 +101,14 @@ class ProductController extends Controller
         return $file;
     }
 
-    public function saveProduct(Product $product, ProductRequest $request)
+    public function saveProduct(Product $product, ProductRequest $request, $edit = false)
     {
         $product->name = $request->name;
         $product->descr = $request->descr;
         $product->price = $request->price;
         $product->shipping_price = $request->shippingprice;
-        $product->fk_owner = auth()->user()->id;
+        if(!$edit)
+            $product->fk_owner = auth()->user()->id;
         $product->fk_category = $request->category;
         if(Auth::user()->type === "su")
             $product->approved = (false);

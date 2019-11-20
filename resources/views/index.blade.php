@@ -24,7 +24,7 @@
             </div>
             <div class="row clearfix">
                 <div class="col-lg-3 col-sm-6 col-md-3">
-                    <a href="productpage.html">
+                    <a href="{{route('customer.products', ['category'=>2])}}">
                         <div class="box-img">
                             <h4>Souliers</h4>
                             <img src="images/product/bullet.png" alt="" />
@@ -32,7 +32,7 @@
                     </a>
                 </div>
                 <div class="col-lg-3 col-sm-6 col-md-3">
-                    <a href="productpage.html">
+                    <a href="{{route('customer.products', ['category'=>1])}}">
                         <div class="box-img">
                             <h4>Bâtons</h4>
                             <img src="images/product/cannon.png" alt="" />
@@ -40,7 +40,7 @@
                     </a>
                 </div>
                 <div class="col-lg-3 col-sm-6 col-md-3">
-                    <a href="productpage.html">
+                    <a href="{{route('customer.products', ['category'=>3])}}">
                         <div class="box-img">
                             <h4>Ballons</h4>
                             <img src="images/product/b2.png" alt="" />
@@ -48,7 +48,7 @@
                     </a>
                 </div>
                 <div class="col-lg-3 col-sm-6 col-md-3">
-                    <a href="{{url("customer/product/2")}}">
+                    <a href="{{url("customer/products/4")}}">
                         <div class="box-img">
                             <h4>Pièces Détachées</h4>
                             <img src="images/product/shafts.png" alt="" />

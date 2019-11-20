@@ -94,7 +94,7 @@
                         <div class="custom-sq">
                             <label class="checkbox">
                                 {{__("categories.".$category->name)}}
-                                <input class ="checkbox" type="checkbox" name="supplier[]" data-type="categorie" value="{{$category->id}}" >
+                                <input class ="checkbox" type="checkbox" @if($selectedCategory == $category->id) checked @endif name="supplier[]" data-type="categorie" value="{{$category->id}}" >
                                 <span class="checkmark"></span>
                             </label>
                         </div>
