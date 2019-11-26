@@ -31,7 +31,7 @@
                 <div class="col-md-4 col-sm-12 left-rs">
                     <div class="navbar-header">
                         <button type="button" id="top-menu" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false">
-                            <span class="sr-only">Afficher le menu</span>
+                            <span class="sr-only">{{__("general.showmenu")}}</span>
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
@@ -39,8 +39,9 @@
                         <a href="{{route("home")}}" class="navbar-brand"><img src="{{ URL::asset('images/logo.png') }}" alt="" /></a>
                     </div>
                     <form class="navbar-form navbar-left web-sh">
-                        <div class="form">
-                            <input type="text" class="form-control" placeholder="Rechercher des produits">
+                        <div class="form autocomplete">
+                            <input type="text" class="form-control mainsearch" id="{{time()}}" placeholder="{{__("general.search products")}}">
+                            <div class="autocomplete-items"></div>
                         </div>
                     </form>
                 </div>
@@ -50,8 +51,8 @@
                             <div class="login-signup">
                                 <ul>
                                     @guest
-                                        <li><a href ="{{route("login")}}">Se connecter</a></li>
-                                        <li><a class="custom-b" href="{{route("register")}}">S'inscrire</a></li>
+                                        <li><a href ="{{route("login")}}">{{__("general.signin")}}</a></li>
+                                        <li><a class="custom-b" href="{{route("register")}}">{{__("general.signup")}}</a></li>
                                     @else
                                         <li><div class="dropdown">
                                                 <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="profileMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -59,12 +60,12 @@
                                                 </a>
 
                                                 <div class="dropdown-menu" aria-labelledby="profileMenu">
-                                                    <a class="dropdown-item" href="{{route("profile")}}">Profile</a>
-                                                    <a class="dropdown-item" href="{{route("customerOrder.index")}}">Mes Commandes</a>
-                                                    <a class="dropdown-item" href="{{ url('/logout') }}">Se déconnecter</a>
+                                                    <a class="dropdown-item" href="{{route("profile")}}">{{__("profile.Profile")}}</a>
+                                                    <a class="dropdown-item" href="{{route("customerOrder.index")}}">{{__("general.myorders")}}</a>
+                                                    <a class="dropdown-item" href="{{ url('/logout') }}">{{__("general.signout")}}</a>
                                                 </div>
                                             </div></li>
-                                        <li><a href="{{route("cart.show")}}"> Panier </a></li>
+                                        <li><a href="{{route("cart.show")}}"> {{__("general.cart")}} </a></li>
                                     @endguest
 
                                 </ul>
@@ -81,16 +82,16 @@
                         <div class="nav-b hidden-xs">
                             <div class="nav-box">
                                 <ul>
-                                    <li><a href="howitworks.html">Comment ça fonctionne ?</a></li>
+                                    <li><a href="howitworks.html">{{__("general.howitworks")}}</a></li>
                                     @supplier
                                         <li><div class="dropdown">
                                                 <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="profileMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                    Fournisseurs <span class="glyphicon glyphicon-chevron-down"></span>
+                                                    {{__("general.suppliers")}} <span class="glyphicon glyphicon-chevron-down"></span>
                                                 </a>
 
                                                 <div class="dropdown-menu" aria-labelledby="profileMenu">
-                                                    <a class="dropdown-item dropd-item" href="{{route("product.index")}}">Mes Produits</a>
-                                                    <a class="dropdown-item dropd-item" href="{{route("shipments.index")}}">Mes Expéditions</a>
+                                                    <a class="dropdown-item dropd-item" href="{{route("product.index")}}">{{__("general.myproducts")}}</a>
+                                                    <a class="dropdown-item dropd-item" href="{{route("shipments.index")}}">{{__("general.myshipments")}}</a>
                                                 </div>
                                             </div></li>
                                     @endsupplier
@@ -101,8 +102,8 @@
                                             </a>
 
                                             <div class="dropdown-menu" aria-labelledby="adminMenu">
-                                                <a class="dropdown-item dropd-item" href="{{route("admin.users")}}">Utilisateurs</a>
-                                                <a class="dropdown-item dropd-item" href="{{route("admin.products")}}">Produits</a>
+                                                <a class="dropdown-item dropd-item" href="{{route("admin.users")}}">{{__("general.users")}}</a>
+                                                <a class="dropdown-item dropd-item" href="{{route("admin.products")}}">{{__("general.products")}}</a>
                                             </div>
                                         </div></li>
                                     @endadmin
@@ -137,9 +138,16 @@
 </div>
 <div id="sidebar" class="top-nav">
     <ul id="sidebar-nav" class="sidebar-nav">
-        <li><a href="#">Help</a></li>
-        <li><a href="howitworks.html">How it works</a></li>
-        <li><a href="#">chamb for Business</a></li>
+        <li><a href="#">{{__("general.howitworks")}}</a></li>
+        @supplier
+        <li><a href="{{route("product.index")}}">{{__("general.myproducts")}}</a></li>
+        <li><a href="{{route("shipments.index")}}">{{__("general.myshipments")}}</a></li>
+        @endsupplier
+        @admin
+        <li><a href="{{route("admin.users")}}">{{__("general.users")}}</a></li>
+        <li><a href="{{route("admin.products")}}">{{__("general.products")}}</a></li>
+        @endadmin
+        <li><a href="#">Support</a></li>
     </ul>
 </div>
 
@@ -153,18 +161,18 @@
             <div class="row">
                 <div class="footer-top clearfix">
                     <div class="col-md-2 col-sm-6">
-                        <h2>Inscrivez-vous pour être au courant des nouveautés !
+                        <h2>{{__("general.signupslogan")}}
                         </h2>
                     </div>
                     <div class="col-md-6 col-sm-6">
                         <div class="form-box">
-                            <input type="text" placeholder="Entrez votre adresse courriel" />
-                            <button>S'inscrire</button>
+                            <input type="text" placeholder="{{__("general.enteremail")}}" />
+                            <button>{{__("general.signup")}}</button>
                         </div>
                     </div>
                     <div class="col-md-4 col-sm-12">
                         <div class="help-box-f">
-                            <h4>Question? Contactez-nous par courriel info@XYZ.com pour obtenir de l'assistance</h4>
+                            <h4>{{__("general.questionslogan")}}</h4>
                         </div>
                     </div>
                 </div>
@@ -172,29 +180,28 @@
                     <div class="col-md-6 col-sm-6">
                         <div class="left-f-box">
                             <div class="col-sm-4">
-                                <h2>Fournisseurs</h2>
+                                <h2> {{__("general.suppliers")}}</h2>
                                 <ul>
-                                    <li><a href="#">Demande d'inscription</a></li>
-                                    <li><a href="howitworks.html">Comment ça fonctionne fournisseurs</a></li>
-                                    <li><a href="pricing.html">Tarifs</a></li>
-                                    <li><a href="#">FAQ pour fournisseurs</a></li>
+                                    <li><a href="#">{{__("general.accountrequest")}}</a></li>
+                                    <li><a href="howitworks.html">{{__("general.howitworks")}}</a></li>
+                                    <li><a href="pricing.html">{{__("general.pricing")}}</a></li>
+                                    <li><a href="#">FAQ</a></li>
                                 </ul>
                             </div>
                             <div class="col-sm-4">
-                                <h2>Acheteurs</h2>
+                                <h2>{{__("general.buyers")}}</h2>
                                 <ul>
-                                    <li><a href="#">Créer un compte</a></li>
-                                    <li><a href="#">Comment ça fonctionne acheteurs</a></li>
-                                    <li><a href="#">Catégories</a></li>
-                                    <li><a href="#">FAQ pour acheteurs</a></li>
+                                    <li><a href="#">{{__("general.signup")}}</a></li>
+                                    <li><a href="#">{{__("general.howitworks")}}</a></li>
+                                    <li><a href="#">FAQ</a></li>
                                 </ul>
                             </div>
                             <div class="col-sm-4">
-                                <h2>XYZ</h2>
+                                <h2>Shopbroomball</h2>
                                 <ul>
-                                    <li><a href="about-us.html">À propos de XYZ</a></li>
-                                    <li><a href="#">Contactez-nous</a></li>
-                                    <li><a href="#">Conditions d'utilisations</a></li>
+                                    <li><a href="about-us.html">{{__("general.aboutshopbroomball")}}</a></li>
+                                    <li><a href="#">{{__("general.contactus")}}</a></li>
+                                    <li><a href="#">{{__("general.termsofuse")}}</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -208,7 +215,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-8">
-                    <p><img width="90" src="{{url::asset("images/logo.png")}}" alt="logo" style="margin-top: -5px;" /> Tous Droits Réservés. XYZ © 2019</p>
+                    <p><img width="90" src="{{url::asset("images/logo.png")}}" alt="logo" style="margin-top: -5px;" /> {{__("general.allrightsreserved")}} Shopbroomball.ca © 2019</p>
                 </div>
                 <div class="col-md-4">
                     <ul class="list-inline socials">
@@ -252,6 +259,23 @@
 <script src="{{ URL::asset('js/wow.min.js') }}"></script>
 <!--custom js-->
 <script src="{{ URL::asset('js/custom.js') }}"></script>
+
+<script>
+    $('.mainsearch').on('input',function(e){
+        if($(this).val().trim().length !== 0)
+        {
+            $.post('/ajax/getSearchResult', { "_token": "{{ csrf_token() }}", q: $(this).val()}, function(markup)
+            {
+                $('.autocomplete-items').html(markup);
+                $(".autocomplete-items").show();
+            });
+        }
+        else
+        {
+            $(".autocomplete-items").hide();
+        }
+    });
+</script>
 
 <script>
     $(document).ready(function(){

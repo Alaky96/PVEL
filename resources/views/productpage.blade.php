@@ -265,7 +265,7 @@
 
             <script>
                 $('#rating').starrr({
-                    rating: {{$rating}},
+                    rating: {{$rating ?? 0}},
                     readOnly: true
                 })
 

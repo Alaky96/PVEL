@@ -12,9 +12,7 @@
 */
 
 //Index
-Route::get('/', function () {
-    return view('index');
-});
+Route::get('/', 'HomeController@index');
 Route::get('/home', 'HomeController@index')->name('home');
 
 //about
@@ -76,7 +74,10 @@ Route::get("/admin/products", "AdminController@showProducts")->name("admin.produ
 route::get("/customer/products/supplier/{supplier}", "CustomerProductController@supplier")->name("customer.products.supplier");
 route::get("/customer/products/{category?}/{supplier?}", "CustomerProductController@index")->name("customer.products");
 route::post("/customer/products/ajax/getProducts", "CustomerProductController@getProducts");
+route::post("/ajax/getSearchResult", "CustomerProductController@getSearchResults");
 
 //Support
 route::get("/support", function(){return view("support");})->name("support")->middleware("auth")->middleware("multilanguages");
+route::get("/support/supplier", "IssueController@index")->name("issue.index");
+route::get("/support/supplier", "IssueController@create")->name("issue.create");
 

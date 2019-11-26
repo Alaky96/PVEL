@@ -9,9 +9,11 @@ use Illuminate\Http\Request;
 use App\Product;
 use App\Http\Requests\ProductRequest;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
 use App\User;
 use App\Comment;
+use Illuminate\Database\Eloquent\Builder;
 
 class CustomerProductController extends Controller
 {
@@ -135,5 +137,19 @@ class CustomerProductController extends Controller
             });
 
         return \View::make('productPartial')->with('products', $result->paginate(9))->with("width", $request->get("width"));
+    }
+
+    public function getSearchResults(Request $request)
+    {
+        $q = $request->q;
+
+        //Querry the products that match the search, approved and active
+        $products = Product::where("name", 'like',  '%'.$q.'%')->orWhere("descr", 'like',  '%'.$q.'%')->
+            orWhereHas('supplier', function (Builder $query) use ($q) {
+                $query->where('name', 'like', '%'.$q.'%');
+            })
+            ->where("active", true)->where('approved', true)->get();
+
+        return view("searchResult",['products'=>$products]);
     }
 }
