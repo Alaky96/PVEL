@@ -280,6 +280,7 @@ class PaymentController extends Controller
                 $PO->save();
                 $this->createShipment($PO);
                 Mail::to('g.brunet96@gmail.com')->send(new OrderConfirmation($PO));
+                Cart::where("fk_owner", auth()->user()->id)->delete();
                return $this->cartService->showView("sucess", trans("cart.confirmOrder"));
             }
 
@@ -313,7 +314,7 @@ class PaymentController extends Controller
                 if ($result->getState() == 'approved') {
                     $PO->status = "P";
                     $PO->save();
-                    $carts = Cart::where("fk_owner", auth()->user()->id)->get();
+                    Cart::where("fk_owner", auth()->user()->id)->delete();
                     return $this->cartService->showView("sucess", trans("cart.confirmOrder"));
                 }
                 return $this->cartService->showView("failed", trans("cart.orderFailed"));

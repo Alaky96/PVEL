@@ -35,6 +35,8 @@ return [
     'contactus'=>'Contactez-Nous',
     'termsofuse'=>'Conditions d\'utilisation',
     'allrightsreserved'=>'Tous Droits Réservés',
+    'confirm'=>'Confirmer',
+    'cancel'=>'Annuler',
 
 
 ];

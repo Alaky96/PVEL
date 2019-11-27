@@ -109,9 +109,9 @@
                             </div>
                         </form>
                         <a href="{{route("confirm", ['po'=>$po->id, 'ans'=>1, 'id'=>$id, 'method'=>$method, 'paymentId'=> Request::get('paymentId'),'token'=> Request::get('token'), 'PayerID'=> Request::get('PayerID')])}}">
-                            <button>Confirm</button>
+                            <button class="btn btn-primary">{{__("general.confirm")}}</button>
                         </a> <a href="{{route("confirm", ['po'=>$po->id, 'ans'=>0, 'id'=>$id, 'method'=>$method])}}">
-                            <button>Cancel</button>
+                            <button class="btn btn-danger">{{__("general.cancel")}}</button>
                         </a>
                     </div>
                 </div>
