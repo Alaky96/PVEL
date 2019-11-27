@@ -66,7 +66,7 @@
                                 <button type="submit" class="btn btn-primary">Continuer</button>
                             </form>
                             <p>Gratuit - Aucune carte de crédit nécéssaire - Aucune obligation</p>
-                            <div class="blue-form_question"><strong>Questions?</strong> Écrivez-vous info@XYZ.com</div>
+                            <div class="blue-form_question"><strong>Questions?</strong> Écrivez-vous info@shopbroomball.ca</div>
                         </div>
                     </div>
                 </div>
@@ -76,7 +76,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-lg-8 col-lg-offset-2">
-                        <p>PVEL est une Plateforme de Vente En Ligne qui s'adresse autant aux fournisseurs (vendeurs) qu'aux clients (acheteurs). L'idée derrière ce projet est de fournir  des outils simple pour permettre aux fournisseurs d'afficher
+                        <p>Shopbroomball.ca est une Plateforme de Vente En Ligne qui s'adresse autant aux fournisseurs (vendeurs) qu'aux clients (acheteurs). L'idée derrière ce projet est de fournir  des outils simple pour permettre aux fournisseurs d'afficher
                             leurs produits sur un site web sans connaissance informatique. Cela est bénéfique pour le fournisseur, car il peut montrer et vendre ses produits, mais aussi pour le client, car tous les produits, de toutes les marques, sont centralisés au même endroit.
                             <img src="{{URL::asset('images/screenshot1.PNG')}}"/>
                             <small>Ajouter un produit en tant que fournisseur</small><br/>

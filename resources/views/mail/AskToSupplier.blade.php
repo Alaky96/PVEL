@@ -41,7 +41,7 @@
     <div class = "box" style=" background: white;
         border-radius: 10px;
         padding: 10px;">
-        <h1 style ="font-weight: bolder">PVEL</h1>
+        <h1 style ="font-weight: bolder">Shopbroomball</h1>
         <h2>Un client vous a posé une question</h2>
 
 
@@ -55,7 +55,7 @@
                 Veuillez répondre au client, par courriel, en utilisant l'adresse électronique mentionnée plus haut.<br/><br/>
 
                 Merci,<br/>
-                L'Équipe PVEL.
+                L'Équipe Shopbroomball.
             </p>
 
 

@@ -41,7 +41,7 @@
     <div class = "box" style=" background: white;
         border-radius: 10px;
         padding: 10px;">
-        <h1 style ="font-weight: bolder">PVEL</h1>
+        <h1 style ="font-weight: bolder">Shopbroomball.ca</h1>
         <h2>Merci de votre achat!</h2>
 
         <p>

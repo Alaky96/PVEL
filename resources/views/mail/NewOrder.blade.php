@@ -50,7 +50,7 @@
             De plus, nous vous demandons de bien vouloir indiquer les informations de suivi dès que possible.<br/>
             Il vous est possible, à tout moment, de consulter les détails de l'expédition en cliquant <a href = "{{route("shipments.edit", ['shipment'=>$shipment->id])}}">ici</a>.
             <br/><br/>Merci de votre confiance,<br/>
-            L'Équipe PVEL
+            L'Équipe Shopbroomball.ca
         </p>
         <div style="text-align:center">
             <a href ="{{route("shipments.edit", ['shipment'=>$shipment->id])}}" ><button style=" display: inline-block;
@@ -68,7 +68,7 @@
         cursor: pointer;">Consulter les détails de l'expédition</button></a>
         </div>
     </div>
-    <p style="text-align:center">Contactez-nous : <a href="mailto:info@PVEL.com">info@PVEL.com</a></p>
+    <p style="text-align:center">Contactez-nous : <a href="mailto:info@shopbroomball.ca">info@shopbroomball.ca</a></p>
 </div>
 
 </body>

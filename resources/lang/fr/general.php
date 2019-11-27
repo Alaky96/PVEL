@@ -26,7 +26,7 @@ return [
     'users'=>'Utilisateurs',
     'products'=>'Produits',
     'signupslogan' => 'Inscrivez-vous pour être au courant des nouveautés !',
-    'questionslogan'=>'Questions ? Contactez-nous par courriel info@XYZ.com pour obtenir de l\'assistance',
+    'questionslogan'=>'Questions ? Contactez-nous par courriel info@shopbroomball.ca pour obtenir de l\'assistance',
     'enteremail'=>'Entrez votre adresse courriel',
     'buyers'=>'Acheteurs',
     'aboutshopbroomball'=>'À propos de Shopbroomball',

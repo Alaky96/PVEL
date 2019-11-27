@@ -31,7 +31,7 @@ class OrderConfirmation extends Mailable
      */
     public function build()
     {
-        return $this->from('sales@PVEL.com', 'PVEL')->subject("Votre Commande PVEL")
+        return $this->from('sales@shopbroomball.ca', 'shopbroomball.ca')->subject("Votre Commande shopbroomball.ca")
             ->view('mail.OrderConfirmation')->with("order", $this->order);
     }
 }

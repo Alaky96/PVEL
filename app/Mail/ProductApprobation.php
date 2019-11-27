@@ -31,7 +31,7 @@ class ProductApprobation extends Mailable
      */
     public function build()
     {
-        return $this->from('sales@PVEL.com', 'PVEL')->subject("Produit en attente d'approbation")
+        return $this->from('sales@shopbroomball.ca', 'shopbroomball.ca')->subject("Produit en attente d'approbation")
             ->view('mail.ProductApprobation')->with("product", $this->product);
     }
 }

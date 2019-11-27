@@ -35,7 +35,7 @@ class AskToSupplier extends Mailable
      */
     public function build()
     {
-        return $this->from('info@PVEL.com', 'PVEL')->subject("Un client pose une question")
+        return $this->from('info@shopbroomball.ca', 'shopbroomball.ca')->subject("Un client pose une question")
             ->view('mail.AskToSupplier')
             ->with('name', $this->name)->with('email', $this->email)->with('text', $this->text);
     }

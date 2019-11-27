@@ -1,5 +1,5 @@
 <?php
 return [
     'itemadded'   => "The item was added to your cart.",
-    'PVEL Order'  => 'Your PVEL Order',
+    'PVEL Order'  => 'Your shopbroomball.ca Order',
 ];

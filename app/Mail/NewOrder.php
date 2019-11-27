@@ -32,7 +32,7 @@ class NewOrder extends Mailable
      */
     public function build()
     {
-        return $this->from('sales@PVEL.com', 'PVEL')->subject("Nouvelle commande reçu")
+        return $this->from('sales@shopbroomball.ca', 'shopbroomball.ca')->subject("Nouvelle commande reçu")
             ->view('mail.NewOrder')->with("shipment", $this->shipment);
     }
 }
