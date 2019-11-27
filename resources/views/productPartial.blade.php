@@ -7,13 +7,16 @@
             @foreach($rows as $product)
                 <article class="col-md-4">
 
-                        <div class="panel-body-product" style="width:{{$width}}">
-                                <div><a href="{{route("customer.product", ['id'=>$product->id])}}"><img class="img-responsive img-product" src ="{{ asset('storage/' . $product->image_path) }}"/></a></div>
-                                <div>
-                                    <p>${{$product->price}}</p>
-                                    <a href="{{route("customer.product", ['id'=>$product->id])}}" class="custom-b btn-details">Voir les détails</a>
-                                </div>
+                    <div class="panel-body-product" >
+                        <h3>{{$product->name}}</h3>
+                        <div>
+                            <a href="{{route("customer.product", ['id'=>$product->id])}}"><img class="img-responsive img-product" src ="{{ asset('storage/' . $product->image_path) }}"/></a>
                         </div>
+                        <div>
+                            <p>${{$product->price}}</p>
+                            <a href="{{route("customer.product", ['id'=>$product->id])}}" class="custom-b btn-details">Voir les détails</a>
+                        </div>
+                    </div>
 
                 </article>
             @endforeach
