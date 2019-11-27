@@ -63,7 +63,7 @@
                     <div class="panel-body">
                         <img src="images/xpann-icon.jpg" class="icon-small" alt="">
                         <h4>{{__("index.allproductslogan")}}</h4>
-                        <p> {{__("index.allproductsdescr")}}
+                        <p> {{__("index.allproductdescr")}}
                         </p>
                     </div>
                 </div>
