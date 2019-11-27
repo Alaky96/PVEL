@@ -16,7 +16,7 @@ class ShipmentController extends Controller
      */
     public function index()
     {
-        $shipments = Shipment::where("fk_vendor", Auth()->id())->get();
+        $shipments = Shipment::where("fk_vendor", Auth()->id())->orderBy("id", 'desc')->get();
         return view("ListShipments", ['shipments'=>$shipments])->with('title', "Vos Expéditions");
     }
 

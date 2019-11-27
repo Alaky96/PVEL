@@ -17,7 +17,7 @@
                 @endif
 
             <h2>{{__("cart.yourcart")}}</h2>
-            @if(isset($carts))
+            @if(($carts->count() > 0 ))
 
                 @foreach($carts as $cart)
                     <div class="container cartitem">
@@ -50,7 +50,6 @@
                         </div>
                     </div>
                 @endforeach
-
                 <div class="container cartitem checkout-box">
                     <div class="row justify-content-md-center ">
                         <div class="col col-sm-6">
@@ -76,7 +75,7 @@
                 </div>
         </div>
         @else
-            <h3>Vide</h3>
+            <h3 style = "text-align: center">Votre panier est vide pour l'instant</h3>
         @endif
 
 
